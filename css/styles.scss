@@ -1,0 +1,161 @@
+///////////////////////////////////////////////////
+/////Colores, Mixins, y classes compartidas
+///////////////////777
+.hide {
+    display: none
+}
+
+.flex-cv {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+}
+
+$color1:#3affb3;
+$color2:#b33aff;
+$color3:#ffb33a;
+$color4: #3a86ff;
+$red:#ff513a;
+$yellow: #e9ff3a;
+$white: #ffffff;
+$black: #000000;
+:root {
+    --color1: $color1;
+    --color2: $color2;
+    --color3: $color3;
+    --color4: $color4;
+    --red: $red;
+    --yellow: $yellow;
+    --white: $white;
+    --black: $black;
+    --fuente1: 'Quicksand', sans-serif; //light 300, regular 400, medium 500, semi-bold 600, bold 700
+}
+
+///////////////////////////////////////////////////
+/////configuración de la página
+///////////////////777
+* {
+    font-family: var(--fuente1);
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+.overlay {
+    background: rgba(0, 0, 0, .3);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    visibility: hidden;
+    z-index: 10;
+    &.active {
+        visibility: visible;
+    }
+}
+
+.popup {
+    background: #F8F8F8;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    padding: 20px;
+    text-align: center;
+    width: 600px;
+    transition: .3s ease all;
+    transform: scale(0.7);
+    opacity: 0;
+    z-index: 30;
+    .btn-cerrarPop {
+        font-size: 16px;
+        line-height: 16px;
+        display: block;
+        text-align: right;
+        transition: .3s ease all;
+        color: #BBBBBB;
+        &:hover {
+            color: #000;
+        }
+    }
+    h3 {
+        font-size: 36px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        opacity: 0;
+    }
+    h4 {
+        font-size: 26px;
+        font-weight: 300;
+        margin-bottom: 40px;
+        opacity: 0;
+    }
+    .contenedor-popup {
+        opacity: 0;
+    }
+}
+
+
+/* ------------------------- */
+
+
+/* ANIMACIONES */
+
+
+/* ------------------------- */
+
+.popup.active {
+    transform: scale(1);
+    opacity: 1;
+    h3 {
+        animation: entradaTitulo .8s ease .5s forwards;
+    }
+    form {
+        animation: entradaSubtitulo .8s ease .5s forwards;
+    }
+    input[type="submit"] {
+        animation: entrada3 1s linear 1s forwards;
+    }
+}
+
+@keyframes entradaTitulo {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes entradaSubtitulo {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes entrada3 {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
